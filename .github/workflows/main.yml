@@ -34,7 +34,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            rainchik/t-cleaner:latest
-            rainchik/t-cleaner:${{ env.SHORT_SHA }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/t-cleaner:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/t-cleaner:${{ env.SHORT_SHA }}
           build-args:
             TARGETOS=linux

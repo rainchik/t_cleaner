@@ -29,4 +29,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: rainchik/t_cleaner:${{ GITHUB_SHA }}
+          tags: rainchik/t_cleaner:${{ github.sha }}

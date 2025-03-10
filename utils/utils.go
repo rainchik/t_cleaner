@@ -25,7 +25,7 @@ func CheckAndDeleteOldDownloads(client *transmissionrpc.Client, logger *logrus.L
 	logger.Debugf("Delete torrents older than %s", hoursAgo.Format("2006-01-02 15:04:05"))
 
 	for _, torrent := range torrents {
-		logger.Debugf("Torrent: %s, Status: %s, Date: %s, Dir: %s\n", *torrent.Name, *torrent.Status, *torrent.DoneDate, *torrent.DownloadDir)
+		logger.Debugf("Torrent: %s, Status: %s, Date: %s, Dir: %s", *torrent.Name, *torrent.Status, *torrent.DoneDate, *torrent.DownloadDir)
 		// Validate torrent status
 		if *torrent.Status == transmissionrpc.TorrentStatusStopped || *torrent.Status == transmissionrpc.TorrentStatusSeed {
 			// Check if torrent was completed more than 2 hours ago and DoneDate is not 1970-01-01 (for uncompleted downloads)
@@ -43,9 +43,9 @@ func CheckAndDeleteOldDownloads(client *transmissionrpc.Client, logger *logrus.L
 // deleteTorrent removes a torrent by ID and logs the result
 func deleteTorrent(ctx context.Context, client *transmissionrpc.Client, logger *logrus.Logger, torrent *transmissionrpc.Torrent, deleteData bool, dryRun bool) {
 	if deleteData {
-		logger.Infof("The torrent %s is going to be deleted with files\n", *torrent.Name)
+		logger.Infof("The torrent %s is going to be deleted with files", *torrent.Name)
 	} else {
-		logger.Infof("The torrent %s is going to be deleted without files\n", *torrent.Name)
+		logger.Infof("The torrent %s is going to be deleted without files", *torrent.Name)
 	}
 
 	payload := transmissionrpc.TorrentRemovePayload{

@@ -1,6 +1,6 @@
 services:
   t-cleaner:
-    image: rainchik/t-cleaner:latest
+    image: rainchik/t_cleaner:latest
     restart: unless-stopped
     env_file: 
       - .env
